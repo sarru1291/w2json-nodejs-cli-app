@@ -9,7 +9,6 @@ var fetchData = () => {
     try {
         var jsonString = fs.readFileSync('./prisoners-data.json');
         allPrisonerData = JSON.parse(jsonString);
-        // console.log(allPrisonerData);
         return allPrisonerData;
     } catch (e) {
         return allPrisonerData;
@@ -149,7 +148,19 @@ var addData = () => {
     });
 }
 var add = () => {
-    addData();
+    let allPrisonerData = {
+        prisoner: []
+    };
+    try {
+        if (fs.readFileSync('./prisoners-data.json') == "") {
+            fs.writeFileSync('./prisoners-data.json', JSON.stringify(allPrisonerData));
+            addData();
+        } else {
+            addData();
+        }
+    } catch (ENOENT) {
+        console.log('\n File not found!! create a prisoners-data.json file.\n');
+    }
 };
 var remove = (pid) => {
     let allPrisonerData = {
@@ -167,6 +178,20 @@ var remove = (pid) => {
         console.log('\nNo match found !! Please Enter Valid Prisoner Id\n');
     }
 
+};
+
+var removeAll = () => {
+    let allPrisonerData = {
+        prisoner: []
+    };
+    allPrisonerData = fetchData();
+
+    if (allPrisonerData.prisoner.length == 0) {
+        console.log('\nEmpty file!!!\n');
+    } else {
+        fs.writeFileSync('./prisoners-data.json', '');
+        console.log('\nAll Data Removed!!!\n');
+    }
 };
 
 var showDetail = (prisoner) => {
@@ -196,12 +221,10 @@ var show = (pid) => {
         prisoner: []
     };
     allPrisonerData = fetchData();
-    let arrayOfPrisoner = allPrisonerData.prisoner;
-
-    if (arrayOfPrisoner.length == 0) {
+    if (allPrisonerData.prisoner.length == 0) {
         console.log('\nEmpty file!!!\n');
     } else {
-        let filteredPrisoner = arrayOfPrisoner.filter((prisoner) => {
+        let filteredPrisoner = allPrisonerData.prisoner.filter((prisoner) => {
             return prisoner.prisonerDetail.id == pid;
         });
         if (filteredPrisoner.length == 0) {
@@ -218,23 +241,23 @@ var showAll = () => {
         prisoner: []
     };
     allPrisonerData = fetchData();
-    let arrayOfPrisoner = allPrisonerData.prisoner;
+
     console.log('\n         ---------------All Prisonsers Details---------------\n');
-    console.log(`total ${arrayOfPrisoner.length} Prisoner(s) detail found.\n\n                    --------------------\n`);
-    if (arrayOfPrisoner.length == 0) {
+    console.log(`total ${allPrisonerData.prisoner.length} Prisoner(s) detail found.\n\n                    --------------------\n`);
+    if (allPrisonerData.prisoner.length == 0) {
         console.log('Empty file!!!\n');
     } else {
-        for (let i = 0; i < arrayOfPrisoner.length; i++) {
-            showDetail(arrayOfPrisoner[i]);
+        for (let i = 0; i < allPrisonerData.prisoner.length; i++) {
+            showDetail(allPrisonerData.prisoner[i]);
             console.log('\n                  -------------------\n');
         }
     }
-
 };
 
 module.exports = {
     add,
     remove,
+    removeAll,
     show,
     showAll
 };
