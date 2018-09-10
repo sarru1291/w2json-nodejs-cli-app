@@ -1,52 +1,102 @@
 {
     "prisoner": [{
         "prisonerDetail": {
-            "id": "1",
-            "cellNo": "1",
+            "id": "4",
+            "cellNo": "4",
             "name": {
-                "firstName": "sarru",
-                "lastName": "kumar"
+                "firstName": "4",
+                "lastName": "4"
             },
             "dob": {
-                "day": "02",
-                "month": "02",
-                "year": "1998"
+                "day": "",
+                "month": "",
+                "year": ""
             },
-            "age": "20",
-            "sex": "male"
+            "age": "",
+            "sex": ""
         },
         "prisonerCrimeDetail": {
-            "type": "theft",
-            "description": "He stole money from his father pocket while all were sleeping.",
+            "type": "",
+            "description": "",
             "dateOfCrime": {
-                "day": "10 ",
-                "month": "09",
-                "year": "2018"
+                "day": "",
+                "month": "",
+                "year": ""
             },
             "location": {
-                "area": "khora colony",
-                "city": "ghaziabad",
-                "state": "uttar pradesh",
-                "country": "india"
+                "area": "",
+                "city": "",
+                "state": "",
+                "country": ""
             }
         },
         "prisonerStatusDetail": {
             "dateOfAdmit": {
-                "day": "10",
-                "month": "09",
-                "year": "2018"
+                "day": "",
+                "month": "",
+                "year": ""
             },
-            "durationOfPunishment": "1 year",
-            "currentStatus": "detained",
-            "medicalStatus": "fine"
+            "durationOfPunishment": "",
+            "currentStatus": "",
+            "medicalStatus": ""
         },
         "prisonDetail": {
-            "name": "Khora colony Thana",
+            "name": "",
             "location": {
-                "area": "khora colony",
-                "city": "ghaziabad",
-                "state": "uttar pradesh",
-                "country": "india"
+                "area": "",
+                "city": "",
+                "state": "",
+                "country": ""
+            }
+        }
+    }, {
+        "prisonerDetail": {
+            "id": "4",
+            "cellNo": "4",
+            "name": {
+                "firstName": "4",
+                "lastName": "4"
+            },
+            "dob": {
+                "day": "",
+                "month": "",
+                "year": ""
+            },
+            "age": "",
+            "sex": ""
+        },
+        "prisonerCrimeDetail": {
+            "type": "",
+            "description": "",
+            "dateOfCrime": {
+                "day": "",
+                "month": "",
+                "year": ""
+            },
+            "location": {
+                "area": "",
+                "city": "",
+                "state": "",
+                "country": ""
+            }
+        },
+        "prisonerStatusDetail": {
+            "dateOfAdmit": {
+                "day": "",
+                "month": "",
+                "year": ""
+            },
+            "durationOfPunishment": "",
+            "currentStatus": "",
+            "medicalStatus": ""
+        },
+        "prisonDetail": {
+            "name": "",
+            "location": {
+                "area": "",
+                "city": "",
+                "state": "",
+                "country": ""
             }
         }
     }]

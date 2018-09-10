@@ -1,12 +1,35 @@
 const fs = require("fs");
 const readline = require("readline");
 const prisoners = require("./prisonerDetailObjects.js");
-var rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
 
-var add = () => {
+var fetchData = () => {
+    try {
+        var jsonString = fs.readFileSync('./prisoners-data.json');
+        allPrisonerData = JSON.parse(jsonString);
+        // console.log(allPrisonerData);
+        return allPrisonerData;
+    } catch (e) {
+        return allPrisonerData;
+    }
+};
+
+var filterData = (filteredPrisoner) => {
+    let allPrisonerData = {
+        prisoner: []
+    };
+    // console.log(filteredPrisoner[0]);
+    for (var i = 0; i < filteredPrisoner.length; i++) {
+        allPrisonerData.prisoner.push(filteredPrisoner[i]);
+    }
+    var allData = JSON.stringify(allPrisonerData);
+    // console.log(allData);
+    fs.writeFileSync('./prisoners-data.json', allData);
+};
+var addData = () => {
+    var rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout
+    });
     console.log("\n          ----------Fill the Prisoner Detail----------\n");
     rl.question("Prisoner Id: ", (id) => {
 
@@ -80,17 +103,16 @@ var add = () => {
                                                                                                                         var allPrisonerData = {
                                                                                                                             prisoner: []
                                                                                                                         };
-                                                                                                                        fs.createReadStream('./prisoners-data.json').
-                                                                                                                        on('data', (chunk) => {
-                                                                                                                            var jsonString = chunk;
-                                                                                                                            allPrisonerData = JSON.parse(jsonString);
+                                                                                                                        fs.createReadStream('./prisoners-data.json').on('data', (chunk) => {
+
+                                                                                                                            allPrisonerData = JSON.parse(chunk);
+
                                                                                                                             allPrisonerData.prisoner.push(prisoners);
-                                                                                                                            fs.createWriteStream('./prisoners-data.json').write(JSON.stringify(allPrisonerData));
-                                                                                                                        }).on('error', (err) => {
-                                                                                                                            if (err) {
-                                                                                                                                console.log('file not found');
-                                                                                                                            }
+                                                                                                                            fs.writeFileSync('./prisoners-data.json', JSON.stringify(allPrisonerData));
+
                                                                                                                         });
+
+
                                                                                                                         console.log('\n\n           Data filled up successfully!!!');
                                                                                                                         rl.close();
                                                                                                                     });
@@ -123,24 +145,43 @@ var add = () => {
             });
         });
     });
+}
+var add = () => {
+    addData();
 };
-var remove = () => {
-    console.log("remove");
+var remove = (pid) => {
+    let allPrisonerData = {
+        prisoner: []
+    };
+    allPrisonerData = fetchData();
+    var arrayOfPrisoner = allPrisonerData.prisoner;
+    // console.log(arrayOfPrisoner[5]);
+    var filteredPrisoner = arrayOfPrisoner.filter((prisoner) => {
+        return prisoner.prisonerDetail.id != pid;
+    });
+    // console.log(filteredPrisoner);
+    filterData(filteredPrisoner);
+    console.log('data removed successfully!!!');
 };
 
-var update = () => {
-    console.log("update");
-};
+var showDetail = () => {
 
-var show = () => {};
+}
+var show = (pid) => {
+    allPrisonerData = fetchData();
+    console.log(allPrisonerData);
+
+
+};
 var showAll = () => {
-    console.log("showAll");
+    allPrisonerData = fetchData();
+    console.log(allPrisonerData);
+
 };
 
 module.exports = {
     add,
     remove,
-    update,
     show,
     showAll
 };
