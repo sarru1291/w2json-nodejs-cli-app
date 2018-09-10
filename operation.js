@@ -154,9 +154,9 @@ var remove = (pid) => {
         prisoner: []
     };
     allPrisonerData = fetchData();
-    var arrayOfPrisoner = allPrisonerData.prisoner;
+    let arrayOfPrisoner = allPrisonerData.prisoner;
     // console.log(arrayOfPrisoner[5]);
-    var filteredPrisoner = arrayOfPrisoner.filter((prisoner) => {
+    let filteredPrisoner = arrayOfPrisoner.filter((prisoner) => {
         return prisoner.prisonerDetail.id != pid;
     });
     // console.log(filteredPrisoner);
@@ -164,19 +164,57 @@ var remove = (pid) => {
     console.log('data removed successfully!!!');
 };
 
-var showDetail = () => {
-
+var showDetail = (prisoner) => {
+    console.log('>PRISONER DETAIL: ');
+    console.log(`           ID: ${prisoner.prisonerDetail.id}`);
+    console.log(`           CELL NO: ${prisoner.prisonerDetail.cellNo}`);
+    console.log(`           NAME: ${prisoner.prisonerDetail.name.firstName} ${prisoner.prisonerDetail.name.lastName}`);
+    console.log(`           DATE OF BIRTH: ${prisoner.prisonerDetail.dob.day}-${prisoner.prisonerDetail.dob.month}-${prisoner.prisonerDetail.dob.year}`);
+    console.log(`           AGE: ${prisoner.prisonerDetail.age}`);
+    console.log(`           SEX: ${prisoner.prisonerDetail.sex}`);
+    console.log('\n>PRISONER CRIME DETAIL: ');
+    console.log(`           CRIME TYPE:${prisoner.prisonerCrimeDetail.type}`);
+    console.log(`           DESCRIPTION: ${prisoner.prisonerCrimeDetail.description}`);
+    console.log(`           DATE OF CRIME:${prisoner.prisonerCrimeDetail.dateOfCrime.day}-${prisoner.prisonerCrimeDetail.dateOfCrime.month}-${prisoner.prisonerCrimeDetail.dateOfCrime.year}`);
+    console.log(`           LOCATION: ${prisoner.prisonerCrimeDetail.location.area}, ${prisoner.prisonerCrimeDetail.location.city}, ${prisoner.prisonerCrimeDetail.location.state}, ${prisoner.prisonerCrimeDetail.location.country}`);
+    console.log('\n>PRISONER STATUS DETAIL: ');
+    console.log(`           DATE OF ADMIT: ${prisoner.prisonerStatusDetail.dateOfAdmit.day}-${prisoner.prisonerStatusDetail.dateOfAdmit.month}-${prisoner.prisonerStatusDetail.dateOfAdmit.year}`);
+    console.log(`           DURATION OF PUNISHMENT: ${prisoner.prisonerStatusDetail.durationOfPunishment}`);
+    console.log(`           CURRENT STATUS: ${prisoner.prisonerStatusDetail.currentStatus}`);
+    console.log(`           MEDICAL STATUS: ${prisoner.prisonerStatusDetail.medicalStatus}`);
+    console.log('\n>PRISON DETAIL: ');
+    console.log(`           NAME: ${prisoner.prisonDetail.name}`);
+    console.log(`           LOCATION: ${prisoner.prisonDetail.location.area}, ${prisoner.prisonDetail.location.city}, ${prisoner.prisonDetail.location.state}, ${prisoner.prisonDetail.location.country}`);
 }
 var show = (pid) => {
+    let allPrisonerData = {
+        prisoner: []
+    };
     allPrisonerData = fetchData();
-    console.log(allPrisonerData);
-
-
+    let arrayOfPrisoner = allPrisonerData.prisoner;
+    // console.log(arrayOfPrisoner[5]);
+    let filteredPrisoner = arrayOfPrisoner.filter((prisoner) => {
+        return prisoner.prisonerDetail.id == pid;
+    });
+    // console.log(filteredPrisoner[0]);
+    console.log('\n                    -------------------');
+    showDetail(filteredPrisoner[0]);
+    console.log('\n                   -----------------\n');
 };
 var showAll = () => {
+    let allPrisonerData = {
+        prisoner: []
+    };
     allPrisonerData = fetchData();
-    console.log(allPrisonerData);
+    let arrayOfPrisoner = allPrisonerData.prisoner;
+    console.log('\n         ---------------All Prisonsers Details---------------\n');
+    console.log(`total ${arrayOfPrisoner.length} prisoner(s) found.\n\n                    --------------------\n`)
+    for (let i = 0; i < arrayOfPrisoner.length; i++) {
+        showDetail(arrayOfPrisoner[i]);
+        console.log('\n                  -------------------\n');
+    }
 
+    console.log('\n                   -----------------\n');
 };
 
 module.exports = {
