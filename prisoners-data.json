@@ -1,0 +1,53 @@
+{
+    "prisoner": [{
+        "prisonerDetail": {
+            "id": "1",
+            "cellNo": "1",
+            "name": {
+                "firstName": "sarru",
+                "lastName": "kumar"
+            },
+            "dob": {
+                "day": "02",
+                "month": "02",
+                "year": "1998"
+            },
+            "age": "20",
+            "sex": "male"
+        },
+        "prisonerCrimeDetail": {
+            "type": "theft",
+            "description": "He stole money from his father pocket while all were sleeping.",
+            "dateOfCrime": {
+                "day": "10 ",
+                "month": "09",
+                "year": "2018"
+            },
+            "location": {
+                "area": "khora colony",
+                "city": "ghaziabad",
+                "state": "uttar pradesh",
+                "country": "india"
+            }
+        },
+        "prisonerStatusDetail": {
+            "dateOfAdmit": {
+                "day": "10",
+                "month": "09",
+                "year": "2018"
+            },
+            "durationOfPunishment": "1 year",
+            "currentStatus": "detained",
+            "medicalStatus": "fine"
+        },
+        "prisonDetail": {
+            "name": "Khora colony Thana",
+            "location": {
+                "area": "khora colony",
+                "city": "ghaziabad",
+                "state": "uttar pradesh",
+                "country": "india"
+            }
+        }
+    }]
+}
