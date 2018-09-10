@@ -1,6 +1,20 @@
 const yargs = require('yargs');
 const operation = require('./operation.js');
-var argv = yargs.argv;
+
+var pid = {
+    describe: 'Prisoner Id',
+    demand: true,
+    alias: 'p'
+};
+var argv = yargs.command('add', 'Add prisoner detail').
+command('remove', 'Remove prisoner detail', {
+    pid: pid
+}).
+command('show', 'Show details of particular Prisoner', {
+    pid: pid
+}).command('showall', 'Show details of All Prisoners').alias('v', 'version').
+alias('h', 'help').
+help().argv;
 
 var command = argv._[0];
 
@@ -9,8 +23,6 @@ if (command === 'add') {
 } else if (command === 'remove') {
     var pid = argv.pid;
     operation.remove(pid);
-} else if (command === 'update') {
-    operation.update();
 } else if (command === 'show') {
     var pid = argv.pid;
     operation.show(pid);

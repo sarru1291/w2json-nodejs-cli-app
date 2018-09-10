@@ -3,6 +3,9 @@ const readline = require("readline");
 const prisoners = require("./prisonerDetailObjects.js");
 
 var fetchData = () => {
+    let allPrisonerData = {
+        prisoner: []
+    };
     try {
         var jsonString = fs.readFileSync('./prisoners-data.json');
         allPrisonerData = JSON.parse(jsonString);
@@ -17,7 +20,6 @@ var filterData = (filteredPrisoner) => {
     let allPrisonerData = {
         prisoner: []
     };
-    // console.log(filteredPrisoner[0]);
     for (var i = 0; i < filteredPrisoner.length; i++) {
         allPrisonerData.prisoner.push(filteredPrisoner[i]);
     }
@@ -155,13 +157,16 @@ var remove = (pid) => {
     };
     allPrisonerData = fetchData();
     let arrayOfPrisoner = allPrisonerData.prisoner;
-    // console.log(arrayOfPrisoner[5]);
     let filteredPrisoner = arrayOfPrisoner.filter((prisoner) => {
         return prisoner.prisonerDetail.id != pid;
     });
-    // console.log(filteredPrisoner);
-    filterData(filteredPrisoner);
-    console.log('data removed successfully!!!');
+    if (filteredPrisoner.length !== arrayOfPrisoner.length) {
+        filterData(filteredPrisoner);
+        console.log('\nData removed successfully!!!\n');
+    } else {
+        console.log('\nNo match found !! Please Enter Valid Prisoner Id\n');
+    }
+
 };
 
 var showDetail = (prisoner) => {
@@ -192,14 +197,21 @@ var show = (pid) => {
     };
     allPrisonerData = fetchData();
     let arrayOfPrisoner = allPrisonerData.prisoner;
-    // console.log(arrayOfPrisoner[5]);
-    let filteredPrisoner = arrayOfPrisoner.filter((prisoner) => {
-        return prisoner.prisonerDetail.id == pid;
-    });
-    // console.log(filteredPrisoner[0]);
-    console.log('\n                    -------------------');
-    showDetail(filteredPrisoner[0]);
-    console.log('\n                   -----------------\n');
+
+    if (arrayOfPrisoner.length == 0) {
+        console.log('\nEmpty file!!!\n');
+    } else {
+        let filteredPrisoner = arrayOfPrisoner.filter((prisoner) => {
+            return prisoner.prisonerDetail.id == pid;
+        });
+        if (filteredPrisoner.length == 0) {
+            console.log('\nNo match found !! Please Enter Valid Prisoner Id\n');
+        } else {
+            console.log('\n                    -------------------');
+            showDetail(filteredPrisoner[0]);
+            console.log('\n                   -----------------\n');
+        }
+    }
 };
 var showAll = () => {
     let allPrisonerData = {
@@ -208,13 +220,16 @@ var showAll = () => {
     allPrisonerData = fetchData();
     let arrayOfPrisoner = allPrisonerData.prisoner;
     console.log('\n         ---------------All Prisonsers Details---------------\n');
-    console.log(`total ${arrayOfPrisoner.length} prisoner(s) found.\n\n                    --------------------\n`)
-    for (let i = 0; i < arrayOfPrisoner.length; i++) {
-        showDetail(arrayOfPrisoner[i]);
-        console.log('\n                  -------------------\n');
+    console.log(`total ${arrayOfPrisoner.length} Prisoner(s) detail found.\n\n                    --------------------\n`);
+    if (arrayOfPrisoner.length == 0) {
+        console.log('Empty file!!!\n');
+    } else {
+        for (let i = 0; i < arrayOfPrisoner.length; i++) {
+            showDetail(arrayOfPrisoner[i]);
+            console.log('\n                  -------------------\n');
+        }
     }
 
-    console.log('\n                   -----------------\n');
 };
 
 module.exports = {
