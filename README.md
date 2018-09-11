@@ -1,7 +1,7 @@
 # nodejs-cli-app
 It is a w2json(Write to JSON file) CLI appliation using nodejs.<br>
-It can be used to **add,remove and view** the prisoners detail from all over the world into a single **JSON** file which can be used an API containing the information of all the prisoners across the world.
-JSON data can be parsed into any application to analyse the crime rate or the behaviour of the criminal. 
+It can be used to **add,remove and view** the prisoners detail from all over the world into a single **JSON** file which can be used as an API containing the information of all the prisoners across the world.
+This JSON data can be parsed into any application to analyse the crime rate or the behaviour of the criminal and other kind of analysis. 
 <hr>
 <h2> How to use</h2>
 
