@@ -9,19 +9,31 @@ Following are given command to guide you how to use this application<br><br>
 
 * To see all the commands detail and its usage <br>
 
-``` node w2json --help     ```         
+```sh
+$ node w2json --help    
+```         
 * To add Prisoner detail<br>
 
-``` node w2json add```
+```sh 
+$ node w2json add
+```
 * To remove particular Prisoner detail<br>
 
-```node w2json remove -p <prisoner-id>```
+```sh
+$ node w2json remove -p <prisoner-id>
+```
 * To remove all Prisoner detail<br>
 
-```  node w2json removeall```
+```sh
+$ node w2json removeall
+```
 * To show Prisoner detail<br>
 
-``` node w2json show -p <prisoner-id>```
+```sh 
+$ node w2json show -p <prisoner-id>
+```
 * To show all Prisoner detail<br>
 
-```$ node w2json showall -p <prisoner-id>```
+```sh
+$ node w2json showall 
+```
