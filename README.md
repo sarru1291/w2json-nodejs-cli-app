@@ -8,32 +8,26 @@ To run this application, Node.js must be installed. To install Download the Node
 Following are given command to guide you how to use this application<br><br>
 
 * To see all the commands detail and its usage <br>
-
 ```sh
-$ node w2json --help    
+     $ node w2json --help    
 ```         
 * To add Prisoner detail<br>
-
 ```sh 
-$ node w2json add
+     $ node w2json add
 ```
 * To remove particular Prisoner detail<br>
-
 ```sh
-$ node w2json remove -p <prisoner-id>
+     $ node w2json remove -p <prisoner-id>
 ```
 * To remove all Prisoner detail<br>
-
 ```sh
-$ node w2json removeall
+     $ node w2json removeall
 ```
 * To show Prisoner detail<br>
-
 ```sh 
-$ node w2json show -p <prisoner-id>
+     $ node w2json show -p <prisoner-id>
 ```
 * To show all Prisoner detail<br>
-
 ```sh
-$ node w2json showall 
+     $ node w2json showall 
 ```
