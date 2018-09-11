@@ -4,8 +4,9 @@ It can be used to **add,remove and view** the prisoners detail from all over the
 This JSON data can be parsed into any application to analyse the crime rate or the behaviour of the criminal and other kind of analysis. 
 <hr>
 <h2> How to use</h2>
-
-* To see all the command avaiable <br>
+<h4>To run this application, Node.js must be installed. To install Download the Node.js source code or a pre-built installer for your platform from this link: [https://nodejs.org/en/download/]</h4><br>
+Now to run following are given command to guide you how to use this application
+* To see all the commands detail and its usage <br>
 > $ node w2json --help              
 * To add Prisoner detail<br>
 > $ node w2json add
