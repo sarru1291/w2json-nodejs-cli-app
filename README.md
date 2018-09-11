@@ -5,4 +5,9 @@ JSON data can be parsed into any application to analyse the crime rate or the be
 <hr>
 <h2> How to use</h2>
 
-$ node w2json --help
+* To see all the command avaiable 
+$ node w2json --help              
+* To add Prisoner detail
+$ node w2json add
+* To remove Prisoner detail
+$ node w2json remove -p <prisoner-id>
